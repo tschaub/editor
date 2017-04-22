@@ -113,8 +113,8 @@ class AddSource extends React.Component {
       case 'tilexyz_vector': return {
         type: 'vector',
         tiles: source.tiles || ['http://localhost:3000/{x}/{y}/{z}.pbf'],
-        minZoom: source.minzoom || 0,
-        maxZoom: source.maxzoom || 14
+        minZoom: typeof source.minzoom === 'number' ? source.minzoom : GlSpec.layer.minzoom.minimum,
+        maxZoom: typeof source.maxzoom === 'number' ? source.maxzoom : GlSpec.layer.maxzoom.maximum
       }
       case 'tilejson_raster': return {
         type: 'raster',
@@ -123,8 +123,8 @@ class AddSource extends React.Component {
       case 'tilexyz_raster': return {
         type: 'raster',
         tiles: source.tiles || ['http://localhost:3000/{x}/{y}/{z}.pbf'],
-        minzoom: source.minzoom || 0,
-        maxzoom: source.maxzoom || 14
+        minzoom: typeof source.minzoom === 'number' ? source.minzoom : GlSpec.layer.minzoom.minimum,
+        maxzoom: typeof source.maxzoom === 'number' ? source.maxzoom : GlSpec.layer.maxzoom.maximum
       }
       default: return {}
     }
